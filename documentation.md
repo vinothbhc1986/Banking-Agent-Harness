@@ -1,12 +1,12 @@
 # Harness Engineering: A Practical Handbook
 
-*Case study: a banking AI agent, built in Python with Google ADK, LiteLLM, and Gemini `gemini/gemini-3.6-flash` on its free tier.*
+*Banking AI agent, built in Python with Google ADK, LiteLLM, and Gemini `gemini/gemini-3.6-flash` on its free tier.*
 
 This document explains **what Harness Engineering is**, and walks through a real, working example of it being applied one layer at a time. The banking use case is not the point — a chatbot that checks balances and moves money is a convenient, easy-to-reason-about vehicle for demonstrating something more general: *how you build reliable systems around a fundamentally unreliable component (an LLM).*
 
 ---
 
-## Part 1 — What Is Harness Engineering?
+## What Is Harness Engineering?
 
 An AI agent is, at its core, a language model that can call tools. The model alone is a probabilistic text generator: it does not guarantee correctness, does not enforce rules, and cannot be trusted to reliably refuse a bad instruction, correctly remember a constraint, or accurately report what actually happened after it acts. **Harness Engineering is the discipline of building deterministic, non-LLM software around that model so the *system* behaves reliably even though the *model* doesn't.**
 

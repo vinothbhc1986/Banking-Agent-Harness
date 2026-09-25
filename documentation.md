@@ -13,9 +13,13 @@ An AI agent is, at its core, a language model that can call tools. The model alo
 The model contributes judgment, language understanding, and tool selection. The harness contributes everything the model cannot be trusted to guarantee on its own. Harness engineering for AI agents spans several largely independent concerns:
 
 1  **Tool / action governance**  Deciding, in code, whether a requested action is actually allowed — not just hoping the model asked correctly 
+
 2  **Human-in-the-loop / confirmation**  Requiring an explicit, verifiable approval step before a consequential action executes 
+
 3  **Outcome verification**  Checking what *actually* happened after an action, instead of assuming a tool call returning means it succeede
+
 4 |**Execution limits / runaway protection**  Bounding retries, tool-call chains, and repeated failures so a confused or misbehaving agent can't loop forever 
+
 5  **Observability / audit trails**  Making the agent's decisions inspectable — for debugging, trust, and compliance 
 
 This project deliberately isolates **rows 3–7** — the harness around a single agent's *actions* — and builds it up one deterministic layer at a time, in front of a live audience/reader, so each layer's necessity is obvious from the failure it fixes. Rows 1, 2, 8, 9, 10, and 11 are real and important, but they're different problems with different tools; folding them in would dilute the one thing this POC is trying to teach clearly.

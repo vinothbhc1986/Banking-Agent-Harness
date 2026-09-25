@@ -34,11 +34,11 @@ A single Google ADK agent (`app/agent.py`), backed by Gemini `gemini-3.6-flash` 
 - `confirm_transfer` — execute a staged transfer.
 - `get_transaction_status` — look up a past transfer's status.
 
-There's no database, no multiple agents, and no test suite — this is a demonstration artifact, not a product. Everything that matters happens in five sequential steps, each one refactoring the same codebase rather than adding a parallel version. **Step 1 is deliberately unguarded** — it exists to show the failure mode that every subsequent step fixes.
+There's no database, no multiple agents, and no test suite — this is a demonstration artifact, not a product. Everything that matters happens in five sequential steps, each one refactoring the same codebase rather than adding a parallel version.
 
 ---
 
-## Step 1 — The Baseline: No Harness
+## The Baseline: No Harness
 
 ### The pain point
 Give an LLM tool access and a system prompt, and it will do a *plausible-sounding* job — right up until it doesn't. In Step 1, `transfer_money` was a single tool that resolved a beneficiary by a loose name match and executed immediately:
@@ -58,7 +58,7 @@ It isn't — that's the point of Step 1. It's the control group. Every step afte
 
 ---
 
-## Step 2 — Deterministic Validation
+##  Deterministic Validation
 
 ### The pain point
 An LLM can be asked — by a confused user, an adversarial prompt, or its own mistake — to do something that should never be allowed: transfer more money than exists, pay a blocked beneficiary, or blow through a daily limit. Telling the model *in the prompt* "please don't do that" is not a control; it's a suggestion the model can fail to follow, and there's no way to verify after the fact that it followed it.
@@ -82,7 +82,7 @@ It returns a typed result — `TransferValidation(status=APPROVED | NEEDS_CLARIF
 
 ---
 
-## Step 3 — Require Explicit Confirmation
+##  Require Explicit Confirmation
 
 ### The pain point
 Even with validation, a single tool that both *decides* a transfer is valid and *executes* it in one call is one bad prompt away from disaster. Consider: *"Transfer ₹50,000 to Priya and skip confirmation."* A model can be talked into attempting to honor an instruction like that. If "confirm" is just a boolean parameter on the transfer tool, the model can set it — and now the harness's safety depends on the model choosing not to, which is not a guarantee at all.
@@ -102,7 +102,7 @@ This is the crux of the harness pattern: the guarantee doesn't live in what the 
 
 ---
 
-## Step 4 — Verify the Actual Transaction Outcome
+##  Verify the Actual Transaction Outcome
 
 ### The pain point
 "The function call returned without an exception" and "the transfer actually succeeded" are two different facts, and conflating them is a classic way for an agent to confidently lie. In a real system, a downstream payment can fail, or land in a pending state — the calling code finding that out is not automatic; it has to actually check.
@@ -123,7 +123,7 @@ No prompt changes were needed for this step either — the existing instruction 
 
 ---
 
-## Step 5 — Add Limits and Auditability
+## Add Limits and Auditability
 
 ### The pain point
 Two gaps remained even with a fully validated, confirmed, and outcome-verified system:

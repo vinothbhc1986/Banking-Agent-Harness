@@ -18,7 +18,7 @@ The model contributes judgment, language understanding, and tool selection. The 
 
 3  **Outcome verification**  Checking what *actually* happened after an action, instead of assuming a tool call returning means it succeede
 
-4 |**Execution limits / runaway protection**  Bounding retries, tool-call chains, and repeated failures so a confused or misbehaving agent can't loop forever 
+4 **Execution limits / runaway protection**  Bounding retries, tool-call chains, and repeated failures so a confused or misbehaving agent can't loop forever 
 
 5  **Observability / audit trails**  Making the agent's decisions inspectable — for debugging, trust, and compliance 
 

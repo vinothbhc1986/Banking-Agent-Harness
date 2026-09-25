@@ -12,19 +12,13 @@ An AI agent is, at its core, a language model that can call tools. The model alo
 
 The model contributes judgment, language understanding, and tool selection. The harness contributes everything the model cannot be trusted to guarantee on its own. Harness engineering for AI agents spans several largely independent concerns:
 
-| # | Aspect | What it's about | Covered in this project? |
+| # | Aspect | What it's about 
 |---|---|---|---|
-| 1 | **Context management** | What goes into the prompt/context window — instructions, retrieved documents, conversation history, truncation strategy | ❌ Not covered |
-| 2 | **Memory** | What the agent remembers across turns or sessions — short-term working memory, long-term persistent memory, what gets forgotten | ❌ Not covered (all state is in-memory for one session) |
-| 3 | **Tool / action governance** | Deciding, in code, whether a requested action is actually allowed — not just hoping the model asked correctly | ✅ **Step 2** |
-| 4 | **Human-in-the-loop / confirmation** | Requiring an explicit, verifiable approval step before a consequential action executes | ✅ **Step 3** |
-| 5 | **Outcome verification** | Checking what *actually* happened after an action, instead of assuming a tool call returning means it succeeded | ✅ **Step 4** |
-| 6 | **Execution limits / runaway protection** | Bounding retries, tool-call chains, and repeated failures so a confused or misbehaving agent can't loop forever | ✅ **Step 5** |
-| 7 | **Observability / audit trails** | Making the agent's decisions inspectable — for debugging, trust, and compliance | ✅ **Step 5** |
-| 8 | **Multi-agent orchestration** | Decomposing work across specialized agents, routing between them | ❌ Not covered (one agent, by design) |
-| 9 | **Evaluation & testing** | Systematically measuring agent quality against test cases | ❌ Not covered (explicitly out of scope for this POC) |
-| 10 | **Security / prompt-injection defense** | Protecting against malicious input or poisoned tool output steering the agent | ❌ Not covered (adjacent to #3, but not the focus) |
-| 11 | **Cost / latency management** | Model routing, caching, batching | ❌ Not covered |
+| 1 | **Tool / action governance** | Deciding, in code, whether a requested action is actually allowed — not just hoping the model asked correctly 
+| 2 | **Human-in-the-loop / confirmation** | Requiring an explicit, verifiable approval step before a consequential action executes 
+| 3 | **Outcome verification** | Checking what *actually* happened after an action, instead of assuming a tool call returning means it succeede
+| 4 | **Execution limits / runaway protection** | Bounding retries, tool-call chains, and repeated failures so a confused or misbehaving agent can't loop forever 
+| 5 | **Observability / audit trails** | Making the agent's decisions inspectable — for debugging, trust, and compliance 
 
 This project deliberately isolates **rows 3–7** — the harness around a single agent's *actions* — and builds it up one deterministic layer at a time, in front of a live audience/reader, so each layer's necessity is obvious from the failure it fixes. Rows 1, 2, 8, 9, 10, and 11 are real and important, but they're different problems with different tools; folding them in would dilute the one thing this POC is trying to teach clearly.
 

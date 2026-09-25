@@ -171,19 +171,6 @@ Harness code    → validates, requires confirmation, verifies outcomes,
                    enforces limits, and records what happened
 Mock state      → the one source of truth nothing gets to bypass
 ```
-
-**Harness Engineering is not about making the model smarter.** `gemini-2.0-flash` in Step 5 is exactly as capable — and exactly as fallible — as it was in Step 1. What changed is that its mistakes and its cooperativeness with bad instructions stopped mattering, because the system around it was engineered to catch them regardless.
-
 ---
 
-## What This Project Deliberately Doesn't Cover
 
-Referring back to the table in Part 1 — a few adjacent areas that are just as real, but out of scope here, and where you'd go looking if you wanted to extend this pattern:
-
-- **Context & memory management** — this agent has no long-term memory and a trivially short context; a production agent needs a real strategy for what stays in context and what gets forgotten or retrieved.
-- **Multi-agent orchestration** — one agent, one job. Real systems often need to route between specialists, which introduces its own harness problems (handoffs, shared state, conflicting decisions).
-- **Evaluation & testing** — this POC has no automated tests by design; a production harness needs systematic evals to catch regressions in the *harness's* behavior, not just the model's.
-- **Security / prompt-injection defense** — Step 2's validation stops a wide class of bad *actions*, but doesn't specifically defend against adversarial input designed to manipulate the model's tool-selection reasoning itself.
-- **Cost & latency management** — model routing, caching, and batching weren't a concern at this scale, but are their own harness discipline at production scale.
-
-Each of these is a legitimate "next chapter" — but bundling any of them into this project would have made the one lesson it's built to teach harder to see clearly.

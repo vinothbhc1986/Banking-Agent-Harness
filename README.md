@@ -8,7 +8,6 @@ predictable, one layer at a time.
 Stack: Python, Google ADK, LiteLLM, Gemini `gemini/gemini-3.6-flash` free tier,
 in-memory mock data. No database, no multi-agent setup.
 
-## Current status: Step 5 — Limits and Auditability (POC complete)
 
 One ADK agent with five tools (`get_balance`, `find_beneficiaries`,
 `initiate_transfer`, `confirm_transfer`, `get_transaction_status`) running

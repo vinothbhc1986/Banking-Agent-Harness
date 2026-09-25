@@ -114,7 +114,6 @@ This is the crux of the harness pattern: the guarantee doesn't live in what the 
 - `FAILED` → no account state changes at all.
 - The transaction record stores the real status, and that's exactly what's returned to the model — which the system prompt already instructs it to report as-is, not assume.
 
-No prompt changes were needed for this step either — the existing instruction ("report the outcome using the tool's result, not your own assumption") already covered it. What changed is that the *result itself* stopped being a hardcoded lie.
 
 ### Code walkthrough
 - `transaction_executor.execute()` — the one place that decides the real-world outcome; kept separate from `transfer_service` on purpose, so "did it actually work" is one clearly named seam.

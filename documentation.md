@@ -52,7 +52,7 @@ None of this is a flaw in the model — `gemini-2.0-flash` did exactly what a re
 ### How it's "addressed"
 It isn't — that's the point of Step 1. It's the control group. Every step after this one exists to close one specific gap this baseline exposes.
 
-### Code walkthrough (as it stood then)
+### Code walkthrough
 - `mock_data.py` — the only state: one savings account, a handful of beneficiaries (one deliberately `BLOCKED`), an empty transaction log.
 - `banking_tools.py` — four thin functions, including a `transfer_money(beneficiary, amount)` that matched a beneficiary by substring, took the first match, and unconditionally mutated `balance`/`daily_used`.
 

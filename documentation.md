@@ -24,9 +24,9 @@ The model contributes judgment, language understanding, and tool selection. The 
 
 ---
 
-## Part 2 — The Use Case
+## The Use Case
 
-A single Google ADK agent (`app/agent.py`), backed by Gemini `gemini-2.0-flash` through LiteLLM, with five tools operating on in-memory mock data (`app/mock_data.py`):
+A single Google ADK agent (`app/agent.py`), backed by Gemini `gemini-3.6-flash` through LiteLLM, with five tools operating on in-memory mock data (`app/mock_data.py`):
 
 - `get_balance` — read the (one) savings account.
 - `find_beneficiaries` — look up saved payees.

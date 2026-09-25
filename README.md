@@ -104,4 +104,3 @@ To demo the limits, lower a threshold in `app/.env` (e.g.
 action one more time than the limit returns a `BLOCKED` result, visible as a
 `LIMIT_EXCEEDED` event in the terminal.
 
-See `plan.md` for the full 5-step build plan.

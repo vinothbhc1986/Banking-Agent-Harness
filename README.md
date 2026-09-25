@@ -5,7 +5,7 @@ use case is not the point — the point is showing how deterministic code
 ("harness code") around an LLM agent makes it reliable, controlled, and
 predictable, one layer at a time.
 
-Stack: Python, Google ADK, LiteLLM, Gemini `gemini-2.0-flash` free tier,
+Stack: Python, Google ADK, LiteLLM, Gemini `gemini/gemini-3.6-flash` free tier,
 in-memory mock data. No database, no multi-agent setup.
 
 ## Current status: Step 5 — Limits and Auditability (POC complete)

@@ -22,8 +22,6 @@ The model contributes judgment, language understanding, and tool selection. The 
 
 5.  **Observability / audit trails:**  Making the agent's decisions inspectable — for debugging, trust, and compliance 
 
-This project deliberately isolates **rows 3–7** — the harness around a single agent's *actions* — and builds it up one deterministic layer at a time, in front of a live audience/reader, so each layer's necessity is obvious from the failure it fixes. Rows 1, 2, 8, 9, 10, and 11 are real and important, but they're different problems with different tools; folding them in would dilute the one thing this POC is trying to teach clearly.
-
 ---
 
 ## Part 2 — The Use Case

@@ -62,6 +62,16 @@ source .venv/bin/activate
 pip3 install -r requirements.txt
 cp app/.env.example app/.env   # then fill in GEMINI_API_KEY from Google AI Studio
 ```
+# For UV project
+```bash
+uv venv --python 3.14
+.venv\Scripts\Activate.ps1 
+python --version
+uv init
+python -m pip install -r requirements.txt
+
+cp app/.env.example app/.env   # then fill in GEMINI_API_KEY from Google AI Studio
+```
 
 ## Run
 
